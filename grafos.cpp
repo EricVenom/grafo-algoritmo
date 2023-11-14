@@ -143,7 +143,7 @@ int contarVerticeFolha(LISTA *grafo, int vertices)
     int *grau = new int[vertices]{0};
     LISTA *p;
 
-    for (int i = 1; i <= vertices + 1; i++)
+    for (int i = 1; i <= vertices; i++)
     {
         p = grafo;
         while (p != NULL)
@@ -163,5 +163,6 @@ int contarVerticeFolha(LISTA *grafo, int vertices)
             quantidade++;
         }
     }
+    delete[] grau;
     return quantidade;
 }
