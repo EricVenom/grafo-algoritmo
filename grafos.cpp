@@ -137,13 +137,31 @@ int len(LISTA *grafo)
     return tamanho;
 }
 
-int contarVerticeFolha(LISTA *grafo)
+int contarVerticeFolha(LISTA *grafo, int vertices)
 {
     int quantidade = 0;
-    for (int i = 1; i < len(grafo); i++)
+    int *grau = new int[vertices]{0};
+    LISTA *p;
+
+    for (int i = 1; i <= vertices + 1; i++)
     {
-        for (int j = 1; j < len(grafo); j++)
+        p = grafo;
+        while (p != NULL)
         {
+            if (p->aresta[0] == i)
+            {
+                grau[i - 1]++;
+            }
+            p = p->proximo;
         }
     }
+
+    for (int i = 0; i < vertices; i++)
+    {
+        if (grau[i] == 1)
+        {
+            quantidade++;
+        }
+    }
+    return quantidade;
 }
